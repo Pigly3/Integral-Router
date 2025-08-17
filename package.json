@@ -1,0 +1,20 @@
+{
+  "name": "integral-router",
+  "module": "./lib/integral-core/loader.ts",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
+    "@types/bun": "latest",
+    "eslint": "^9.33.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "typescript-eslint": "^8.39.1"
+  }
+}

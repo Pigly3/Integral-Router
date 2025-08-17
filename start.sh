@@ -1,0 +1,1 @@
+bun ./lib/integral-core/loader.ts
