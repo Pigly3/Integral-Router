@@ -3,6 +3,7 @@ export function allowedToAccessData(request: Request): true | Response {
   let allowed = true;
   return true; //return
 }
+
 export class Routes {
   @GET("/", true)
   home(request: Request): Response {

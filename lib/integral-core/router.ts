@@ -1,8 +1,8 @@
 const routesPath = "./data/routes.json";
+let routes = {}
 export function GET(path: string, bypassCanAccess = false): Function {
   async function addGETPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`GET: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`GET${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -14,7 +14,6 @@ export function GET(path: string, bypassCanAccess = false): Function {
 export function POST(path: string, bypassCanAccess=false): Function {
   async function addPOSTPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`POST: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`POST${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -26,7 +25,6 @@ export function POST(path: string, bypassCanAccess=false): Function {
 export function PUT(path: string, bypassCanAccess=false): Function {
   async function addPUTPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`PUT: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`PUT${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -38,7 +36,6 @@ export function PUT(path: string, bypassCanAccess=false): Function {
 export function PATCH(path: string, bypassCanAccess=false): Function {
   async function addPATCHPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`PATCH: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`PATCH${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -47,10 +44,9 @@ export function PATCH(path: string, bypassCanAccess=false): Function {
   }
   return addPATCHPath
 }
-export function DELETE(path: string, bypassCanAccess=false): Function {
+export function DELETE(path: string, bypassCanAccess = false): Function {
   async function addDELETEPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`DELETE: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`DELETE${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -62,7 +58,6 @@ export function DELETE(path: string, bypassCanAccess=false): Function {
 export function CONNECT(path: string, bypassCanAccess=false): Function {
   async function addCONNECTPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`CONNECT: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`CONNECT${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -74,7 +69,6 @@ export function CONNECT(path: string, bypassCanAccess=false): Function {
 export function HEAD(path: string, bypassCanAccess=false): Function {
   async function addHEADPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`HEAD: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`HEAD${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -86,7 +80,6 @@ export function HEAD(path: string, bypassCanAccess=false): Function {
 export function OPTIONS(path: string, bypassCanAccess=false): Function {
   async function addOPTIONSPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`OPTIONS: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`OPTIONS${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
@@ -98,7 +91,6 @@ export function OPTIONS(path: string, bypassCanAccess=false): Function {
 export function TRACE(path: string, bypassCanAccess=false): Function {
   async function addTRACEPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`TRACE: Loaded PATH: ${path} to ${descriptor.value.name}`)
-    let routes = JSON.parse(await Bun.file(routesPath).text())
     routes[`TRACE${path}`] = {
       handler: descriptor.value.name,
       bypassAuth: bypassCanAccess,
