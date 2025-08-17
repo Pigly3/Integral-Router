@@ -5,7 +5,7 @@ export function allowedToAccessData(request: Request): true | Response {
 }
 export class Routes {
   @GET("/", true)
-  home(): Response {
+  home(request: Request): Response {
     return new Response(Bun.file("./html/index.html"), h("html"))
   }
 }

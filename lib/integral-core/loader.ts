@@ -4,6 +4,7 @@ import fs from "fs";
 import {handleSocketMessage, handleSocketOpen, handleSocketClose, handleSocketDrain} from "../../socket.ts"
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routes = new Routes();
+var router = {loaded: false}
 const server = Bun.serve({
   port: 3000,
   async fetch(request) {
@@ -14,7 +15,10 @@ const server = Bun.serve({
       }
       return new Response("Upgrade failed", { status: 500 });
     }
-    const router = JSON.parse(await Bun.file("./data/routes.json").text())
+    if (!router.loaded) {
+      router = JSON.parse(await Bun.file("./data/routes.json").text())
+      router.loaded = true
+    }
     if (router[request.method + path]) {
       if (!router[request.method + path].handler.bypassAuth) {
         let allowed = allowedToAccessData(request)
