@@ -1,5 +1,5 @@
-const routesPath = "../../data/routes.json";
-export function GET(path: string, bypassCanAccess=false): Function {
+const routesPath = "./data/routes.json";
+export function GET(path: string, bypassCanAccess = false): Function {
   async function addGETPath(target: any, key: string, descriptor: PropertyDescriptor): Promise<void> {
     console.log(`GET: Loaded PATH: ${path} to ${descriptor.value.name}`)
     let routes = JSON.parse(await Bun.file(routesPath).text())
@@ -107,7 +107,7 @@ export function TRACE(path: string, bypassCanAccess=false): Function {
   }
   return addTRACEPath
 }
-function h(type: string, cacheData: boolean | null, cookie: string | null) {
+export function h(type: string, cacheData: boolean | null, cookie: string | null) {
   var ret;
   if (!type.includes("/")) {
     //RESPONSE type inference
@@ -138,5 +138,5 @@ export function serveFile(path:string, type:string, cacheData: boolean | null, c
   return new Response(Bun.file(path), h(type, cacheData, cookie))
 }
 export function serveStatic(name: string, type:string) {
-  return new Response(Bun.file(`../../static${name}`), h(type, true))
+  return new Response(Bun.file(`./static/${name}`), h(type, true))
 }

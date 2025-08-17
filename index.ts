@@ -1,4 +1,4 @@
-import {GET, POST, PATCH, PUT, DELETE, CONNECT, HEAD, OPTIONS, TRACE, serveFile} from "./lib/integral-core/router"
+import {GET, POST, PATCH, PUT, DELETE, CONNECT, HEAD, OPTIONS, TRACE, serveFile, h, serveStatic, FlushConfigBefore} from "./lib/integral-core/router"
 export function allowedToAccessData(request: Request): true | Response {
   let allowed = true;
   return true; //return
@@ -6,7 +6,6 @@ export function allowedToAccessData(request: Request): true | Response {
 export class Routes {
   @GET("/", true)
   home(): Response {
-    return new Response(Bun.file("./html/index.html"))
+    return new Response(Bun.file("./html/index.html"), h("html"))
   }
-
 }
